@@ -21,9 +21,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   void getList() async {
-    List<YT_API> ytResult = await ytApi.getTrends(regionCode: "id");
+    List<YT_API> ytResult = await ytApi.getTrends(regionCode: "PT");
     ytResult.forEach((youToBe) {
-      print("title  >>>>           ${youToBe.title}");
+
     });
   }
 
@@ -79,4 +79,4 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-const YOUTUBE_API_KEY = '';
+const YOUTUBE_API_KEY = 'AIzaSyCqkl23zF-hd_keO0IBRNbLkpWdQu4hzxY';

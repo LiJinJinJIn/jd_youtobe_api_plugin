@@ -1,15 +1,6 @@
 class YT_API {
   dynamic thumbnail;
-  String kind,
-      id,
-      publishedAt,
-      channelId,
-      channelurl,
-      title,
-      description,
-      channelTitle,
-      url,
-      duration;
+  String kind, id, publishedAt, channelId, channelurl, title, description, channelTitle, url, duration, viewCount;
 
   YT_API(dynamic data, {bool getTrendingVideo: false}) {
     thumbnail = {
@@ -18,16 +9,21 @@ class YT_API {
       'high': data['snippet']['thumbnails']['high']
     };
     if (getTrendingVideo) {
-      kind = 'video'; //data['kind'].substring(8)
+      kind = 'video';
       id = data['id'];
     } else {
       kind = data['id']['kind'].substring(8);
       id = data['id'][data['id'].keys.elementAt(1)];
     }
     print(id);
+    print(">>>         kind:       " + kind);
+    print(">>>         id:       " + id);
     url = getURL(kind, id);
+    print(">>>         url:       " + url);
     publishedAt = data['snippet']['publishedAt'];
     channelId = data['snippet']['channelId'];
+
+    viewCount = data['statistics']['viewCount'].toString();
     channelurl = "https://www.youtube.com/channel/$channelId";
     title = data['snippet']['title'];
     description = data['snippet']['description'];
